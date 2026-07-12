@@ -1,0 +1,50 @@
+package com.athletico.eshop;
+
+/**
+ * Tracks who is currently logged in, so any controller can check
+ * the current user's role (e.g. to decide whether to show the admin screen).
+ * Simple singleton: one instance for the whole running application.
+ */
+public class Session {
+
+    private static Session instance;
+
+    private String username;
+    private String role; // "admin" or "customer"
+
+    private Session() {
+    }
+
+    public static Session getInstance() {
+        if (instance == null) {
+            instance = new Session();
+        }
+        return instance;
+    }
+
+    public void login(String username, String role) {
+        this.username = username;
+        this.role = role;
+    }
+
+    public void logout() {
+        this.username = null;
+        this.role = null;
+    }
+
+    public boolean isLoggedIn() {
+        return username != null;
+    }
+
+    public boolean isAdmin() {
+        return "admin".equalsIgnoreCase(role);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+}
