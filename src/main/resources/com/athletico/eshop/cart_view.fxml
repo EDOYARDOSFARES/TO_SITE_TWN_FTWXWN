@@ -64,7 +64,7 @@
             <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0">
                <children>
                   <Label text="Total : " />
-                  <Label fx:id="totalpriceLabel" text="$0.00" />
+                  <Label fx:id="totalpriceLabel" text="0.00" />
                </children>
             </HBox>
             <Button fx:id="checkoutButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Checkout" textOverrun="WORD_ELLIPSIS" />
