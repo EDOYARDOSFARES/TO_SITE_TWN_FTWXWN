@@ -16,6 +16,8 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
+    private final UserDAO userDAO = new UserDAO();
+
     @FXML
     private void initialize() {
         loginButton.setOnAction(event -> handleLogin());
@@ -25,14 +27,16 @@ public class LoginController {
         String username = usernameInput.getText();
         String password = passwordInput.getText();
 
-        // TEMPORARY hardcoded check - replace with UserDAO.authenticate()
-        // once the MySQL layer is built.
-        if ("admin".equals(username) && "admin123".equals(password)) {
-            Session.getInstance().login(username, "admin");
-            SceneManager.switchTo("admin_view.fxml");
-        } else if ("customer".equals(username) && "customer123".equals(password)) {
-            Session.getInstance().login(username, "customer");
-            SceneManager.switchTo("main_view.fxml");
+        User user = userDAO.authenticate(username, password);
+
+        if (user != null) {
+            Session.getInstance().login(user.getId(), user.getUsername(), user.getRole());
+
+            if (Session.getInstance().isAdmin()) {
+                SceneManager.switchTo("admin_view.fxml");
+            } else {
+                SceneManager.switchTo("main_view.fxml");
+            }
         } else {
             showError("Invalid username or password.");
         }

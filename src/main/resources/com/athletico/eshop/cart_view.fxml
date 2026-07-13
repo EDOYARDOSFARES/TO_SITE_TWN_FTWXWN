@@ -5,20 +5,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.athletico.eshop.CartViewController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="BackButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: transparent;">
+            <Button fx:id="BackButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="160.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="140.0" preserveRatio="true">
                      <image>
@@ -27,10 +27,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Region prefHeight="116.0" prefWidth="364.0" HBox.hgrow="ALWAYS" />
-            <Label prefHeight="100.0" prefWidth="115.0" text="Your Shopping Cart">
+            <Region prefHeight="116.0" HBox.hgrow="ALWAYS" />
+            <Label prefHeight="100.0" text="Your Shopping Cart">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
@@ -40,27 +40,34 @@
       </HBox>
    </top>
    <center>
-      <TableView prefHeight="300.0" prefWidth="445.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="cartTableView" prefHeight="300.0" prefWidth="445.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="productColumn" prefWidth="117.60003662109375" text="Product" />
-          <TableColumn fx:id="priceColumn" prefWidth="56.79998779296875" text="Price" />
-            <TableColumn fx:id="quantityColumn" prefWidth="65.5999755859375" text="Quantity" />
-            <TableColumn fx:id="totalColumn" prefWidth="73.5999755859375" text="Total" />
-            <TableColumn fx:id="removeColumn" prefWidth="70.39996337890625" text="Remove" />
+          <TableColumn fx:id="productColumn" prefWidth="300.0" text="Product" />
+          <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Price" />
+            <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+            <TableColumn fx:id="totalColumn" prefWidth="120.0" text="Total" />
+            <TableColumn fx:id="removeColumn" prefWidth="120.0" text="Remove" />
         </columns>
       </TableView>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefWidth="220.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
          <children>
-            <Label prefHeight="18.0" prefWidth="98.0" text="Order Summary " />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <Label text="Order Summary">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="98.0" text="Total : " />
-                  <Label fx:id="totalpriceLabel" prefHeight="18.0" prefWidth="66.0" />
+                  <Label text="Total : " />
+                  <Label fx:id="totalpriceLabel" text="$0.00" />
                </children>
             </HBox>
-            <Button fx:id="checkoutButton" mnemonicParsing="false" prefHeight="98.0" prefWidth="98.0" text="Checkout" textOverrun="WORD_ELLIPSIS" />
+            <Button fx:id="checkoutButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Checkout" textOverrun="WORD_ELLIPSIS" />
          </children>
       </VBox>
    </right>
