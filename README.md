@@ -1,2 +1,2 @@
-# TO_SITE_TWN_FTWXWN
-Ena site ths plakas gia dokimh
+# FIRST SITE IN JAVA
+First basic website for an eshop 
